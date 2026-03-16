@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A Question For You</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    color:white;
+}
+
+.container{
+    background:rgba(0,0,0,0.4);
+    padding:40px;
+    border-radius:20px;
+    width:420px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.yes{
+    background:white;
+    color:#ff6b81;
+}
+
+.no{
+    background:#222;
+    color:white;
+    position:absolute;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Hey :)</h1>
+
+<p>I just wanted to tell you something...</p>
+
+<p>I think you're really cute and I like talking to you.</p>
+
+<h3>Question:</h3>
+<p>Do you think you're cute too?</p>
+
+<button class="yes" onclick="yesClicked()">Yes</button>
+<button class="no" id="noBtn">No</button>
+
+<p id="result"></p>
+</div>
+
+<script>
+
+function yesClicked(){
+    document.getElementById("result").innerText =
+    "Good 😌 because I think you are too.";
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+    const x = Math.random()*window.innerWidth;
+    const y = Math.random()*window.innerHeight;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
