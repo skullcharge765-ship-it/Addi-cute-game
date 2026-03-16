@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>A Question For You</title>
+<title>A Question For Addi</title>
 
 <style>
 body{
@@ -60,28 +60,38 @@ button{
 <body>
 
 <div class="container">
-<h1>Hey :)</h1>
+<h1>Hey Addi :)</h1>
 
-<p>I just wanted to tell you something...</p>
+<p>I wanted to ask you something...</p>
 
-<p>I think you're really cute and I like talking to you.</p>
-
-<h3>Question:</h3>
-<p>Do you think you're cute too?</p>
+<h3>Do you think you're cute?</h3>
 
 <button class="yes" onclick="yesClicked()">Yes</button>
 <button class="no" id="noBtn">No</button>
 
 <p id="result"></p>
+
 </div>
 
 <script>
 
+let yesClicks = 0;
+
 function yesClicked(){
-    document.getElementById("result").innerText =
-    "Good 😌 because I think you are too.";
+
+    yesClicks++;
+
+    if(yesClicks <= 6){
+        document.getElementById("result").innerText = "Are you sure?";
+    }
+    else{
+        document.getElementById("result").innerText =
+        "Good 😌 because I think you are too.";
+    }
+
 }
 
+// NO BUTTON RUNS AWAY
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover",()=>{
@@ -92,7 +102,9 @@ noBtn.addEventListener("mouseover",()=>{
     noBtn.style.top = y + "px";
 });
 
+// FLOATING HEARTS
 function createHeart(){
+
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML="❤";
